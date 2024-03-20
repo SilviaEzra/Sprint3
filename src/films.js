@@ -124,17 +124,28 @@ console.log(moviesAverageByCategory(movies, "Sci-Fi"));
 function hoursToMinutes(movies) {
 
   return movies.map(movie => {
-    
-    const parts = movie.duration.split(' ');
-    const hours = parseInt(parts[0], 10);
-    const minutes = parseInt(parts[1], 10);
+    // Split the duration into hours and minutes
+    const parts = movie.duration.match(/\d+/g);
+    let totalMinutes = 0;
 
+    // Check if the duration has valid format
+    if (parts && parts.length === 2) {
+      const hours = parseInt(parts[0], 10);
+      const minutes = parseInt(parts[1], 10);
+      totalMinutes = (hours * 60) + minutes;
+    } else {
+      // If the duration is not in the expected format, set it to 120 minutes
+      totalMinutes = 120; // 2 hours
+    }
+
+    // Return the movie object with the duration in minutes
     return {
       ...movie,
-      duration: (hours * 60) + minutes
+      duration: totalMinutes
     };
   });
 }
+
 
 const moviesWithMinutesDuration = hoursToMinutes(movies);
 console.log(moviesWithMinutesDuration);
