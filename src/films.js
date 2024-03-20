@@ -65,7 +65,7 @@ console.log(first20.toString());
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
 
-  /* const orderYear = movies.slice().sort((a, b) => a.year - b.year); */
+  
   const newArray = [...array]
   const orderYear = newArray.sort((a,b) => {
     if (a.year !== b.year){
@@ -76,30 +76,7 @@ function orderByYear(array) {
   )
   return orderYear;
  
-  /* if (orderYear.length === 1) {
-    return [orderYear[0]];
-  } else {
-    const orderYearAZ = orderYear.slice().sort((a, b) => {
-      const titleA = a.title.toLowerCase();
-      const titleB = b.title.toLowerCase();
-      if (titleA < titleB) return -1;
-      if (titleA > titleB) return 1;
-      return 0;
-    });
-    return orderYearAZ;
-  } */
-  /* const orderYear = movies.sort((a, b) => a.year - b.year)
-  console.log(orderYear)
-  
-  const orderYearAZ = orderYear.sort((a, b) => {
-    const titleA = a.title.toLowerCase();
-    const titleB = b.title.toLowerCase();
-    if (titleA < titleB) return -1;
-    if (titleA > titleB) return 1;
-    return 0;});
-
-    console.log(orderYearAZ) */
-
+ 
 
 }
 
@@ -124,21 +101,21 @@ console.log(moviesAverageByCategory(movies, "Sci-Fi"));
 function hoursToMinutes(movies) {
 
   return movies.map(movie => {
-    // Split the duration into hours and minutes
+    
     const parts = movie.duration.match(/\d+/g);
     let totalMinutes = 0;
 
-    // Check if the duration has valid format
+    
     if (parts && parts.length === 2) {
       const hours = parseInt(parts[0], 10);
       const minutes = parseInt(parts[1], 10);
       totalMinutes = (hours * 60) + minutes;
     } else {
-      // If the duration is not in the expected format, set it to 120 minutes
-      totalMinutes = 120; // 2 hours
+      
+      totalMinutes = 120; 
     }
 
-    // Return the movie object with the duration in minutes
+    
     return {
       ...movie,
       duration: totalMinutes
