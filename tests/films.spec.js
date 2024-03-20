@@ -292,11 +292,44 @@ describe('Function "orderByYear"', () => {
 
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
+
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
+  });
+
+  it('should return a number', () => {
+    const movies = [
+      { title: "Inception", genre: "Sci-Fi", score: 8.8 },
+      { title: "Interstellar", genre: "Sci-Fi", score: 8.6 }
+    ];
+    expect(typeof moviesAverageByCategory(movies, "Sci-Fi")).toBe('number');
+  });
+
+  it('should be different from NaN', () => {
+    const movies = [
+      { title: "Inception", genre: "Sci-Fi", score: 8.8 },
+      { title: "Interstellar", genre: "Sci-Fi", score: 8.6 }
+    ];
+    expect(moviesAverageByCategory(movies, "Sci-Fi")).not.toBeNaN();
+  });
+
+  it('should return the average score of movies in the given category', () => {
+    const movies = [
+      { title: "Inception", genre: "Sci-Fi", score: 8.8 },
+      { title: "Interstellar", genre: "Sci-Fi", score: 8.6 }
+    ];
+    expect(moviesAverageByCategory(movies, "Sci-Fi")).toBe(8.7);
+  });
+
+  it('should return 0 when no movies are found in the given category', () => {
+    const movies = [
+      { title: "The Dark Knight", genre: "Action", score: 9.0 }
+    ];
+    expect(moviesAverageByCategory(movies, "Sci-Fi")).toBe(0);
   });
 });
+
 
 // Exercise 7
 describe('Function "hoursToMinutes"', () => {
